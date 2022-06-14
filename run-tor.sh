@@ -15,9 +15,9 @@ else
 fi
 
 if [ -z "$RELAY_PORT" ] ; then
-	echo 443 >> $RELAY_CONFIG
+	echo "ORPort	443" >> $RELAY_CONFIG
 else
-	echo "$RELAY_PORT" >> $RELAY_CONFIG
+	echo "ORPort	$RELAY_PORT" >> $RELAY_CONFIG
 fi
 
 if [ -z "$RELAY_EXIT" ] || [ "$RELAY_EXIT" -eq 0 ] ; then
