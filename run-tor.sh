@@ -32,7 +32,6 @@ echo "SocksPort 0" >> $RELAY_CONFIG
 echo "Log notice	stdout" >> $RELAY_CONFIG
 echo "DataDirectory /var/lib/tor" >> $RELAY_CONFIG
 echo "User	tor" >> $RELAY_CONFIG
-echo "DataDirectory	/var/lib/tor/data" >> $RELAY_CONFIG
 
 if [ -z "$RELAY_BANDWIDTH" ] ; then
 	echo "Relay bandwidth not set!"
