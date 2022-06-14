@@ -19,6 +19,8 @@ services:
     hostname: tor-relay
     ports:
       - "200:200"
+    volumes:
+      - ./tor-data:/var/lib/tor/data
     environment:
       - RELAY_NICKNAME=natestorrelay
       - RELAY_CONTACT=nate@natechoe.dev
