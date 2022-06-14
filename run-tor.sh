@@ -20,7 +20,7 @@ else
 	echo "$RELAY_PORT" >> $RELAY_CONFIG
 fi
 
-if [ -z "$RELAY_EXIT" | "$RELAY_EXIT" -eq 0 ] ; then
+if [ -z "$RELAY_EXIT" ] || [ "$RELAY_EXIT" -eq 0 ] ; then
 	echo "ExitRelay	0" >> $RELAY_CONFIG
 else
 	echo "ExitRelay	1" >> $RELAY_CONFIG
