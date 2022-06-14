@@ -1,6 +1,5 @@
 FROM archlinux:latest
-RUN pacman -Syu --noconfirm tor && rm /etc/tor/torrc
-# We want to create a custom config so we remove the default torrc
+RUN pacman -Syu --noconfirm tor
 VOLUME /var/lib/tor
 COPY ./run-tor.sh /run-tor.sh
 
