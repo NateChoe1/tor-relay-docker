@@ -42,4 +42,5 @@ else
 	echo "BandwidthBurst $RELAY_BANDWIDTH" >> $RELAY_CONFIG
 fi
 
+chown -R tor:tor /home/tor/tor-data
 tor
