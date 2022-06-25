@@ -10,7 +10,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./tor-data:/var/lib/tor/
+      - ./tor-data:/home/tor/tor-data
     environment:
       - RELAY_NICKNAME=tmptestrelay
       - RELAY_PORT=8000
