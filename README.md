@@ -28,6 +28,7 @@ services:
       - RELAY_EXIT=0
       - RELAY_LOGS=syslog
       - RELAY_BANDWIDTH=25MBytes
+      - IPV4_ONLY=1
     restart:
       always
 ```

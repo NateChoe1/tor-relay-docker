@@ -17,9 +17,14 @@ else
 fi
 
 if [ -z "$RELAY_PORT" ] ; then
-	echo "ORPort 443" >> $RELAY_CONFIG
+	echo -n "ORPort 443" >> $RELAY_CONFIG
 else
-	echo "ORPort $RELAY_PORT" >> $RELAY_CONFIG
+	echo -n "ORPort $RELAY_PORT" >> $RELAY_CONFIG
+fi
+if [ "$IPV4_ONLY" -eq 1 ] ; then
+	echo " IPv4Only" >> $RELAY_CONFIG
+else
+	echo "" >> $RELAY_CONFIG
 fi
 
 if [ -z "$RELAY_EXIT" ] || [ "$RELAY_EXIT" -eq 0 ] ; then
