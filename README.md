@@ -28,7 +28,8 @@ services:
       - RELAY_EXIT=0
       - RELAY_LOGS=syslog
       - RELAY_BANDWIDTH=25MBytes
-      - IPV4_ONLY=1
+      - RELAY_IPV4_ONLY=1
+      - RELAY_MAXMEM=1536MBytes
     restart:
       always
 ```

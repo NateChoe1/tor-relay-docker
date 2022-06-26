@@ -21,7 +21,7 @@ if [ -z "$RELAY_PORT" ] ; then
 else
 	echo -n "ORPort $RELAY_PORT" >> $RELAY_CONFIG
 fi
-if [ "$IPV4_ONLY" -eq 1 ] ; then
+if [ "$RELAY_IPV4_ONLY" -eq 1 ] ; then
 	echo " IPv4Only" >> $RELAY_CONFIG
 else
 	echo "" >> $RELAY_CONFIG
@@ -33,19 +33,26 @@ else
 	echo "ExitRelay 1" >> $RELAY_CONFIG
 fi
 
-echo "SocksPort 0" >> $RELAY_CONFIG
-echo "Log notice stdout" >> $RELAY_CONFIG
-echo "DataDirectory /var/lib/tor/data" >> $RELAY_CONFIG
-echo "ControlPort 9051" >> $RELAY_CONFIG
-echo "User tor" >> $RELAY_CONFIG
-echo "DataDirectory /home/tor/tor-data" >> $RELAY_CONFIG
-
 if [ -z "$RELAY_BANDWIDTH" ] ; then
 	echo "Relay bandwidth not set!"
 else
 	echo "BandwidthRate $RELAY_BANDWIDTH" >> $RELAY_CONFIG
 	echo "BandwidthBurst $RELAY_BANDWIDTH" >> $RELAY_CONFIG
 fi
+
+if [ -n "$RELAY_MAXMEM" ] ; then
+	echo "MaxMemInQueues $RELAY_MAXMEM" >> $RELAY_CONFIG
+fi
+
+if [ -n "$RELAY_FAMILY" ] ; then
+	echo "MyFamily $RELAY_FAMILY" >> $RELAY_CONFIG
+fi
+
+echo "SocksPort 0" >> $RELAY_CONFIG
+echo "Log notice stdout" >> $RELAY_CONFIG
+echo "ControlPort 9051" >> $RELAY_CONFIG
+echo "User tor" >> $RELAY_CONFIG
+echo "DataDirectory /home/tor/tor-data" >> $RELAY_CONFIG
 
 chown -R tor:tor /home/tor/tor-data
 tor
