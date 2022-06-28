@@ -30,8 +30,14 @@ services:
       - RELAY_BANDWIDTH=25MBytes
       - RELAY_IPV4_ONLY=1
       - RELAY_MAXMEM=1536MBytes
+      - RELAY_FAMILY=[some family value]
     restart:
       always
 ```
 
 All of this seems pretty self documenting.
+
+If the ```RELAY_EXPERT``` variable is set, then no config file is generated.
+Instead, the config file mounted onto `/etc/tor/torrc` is used. You probably
+don't want this, it's really only here to allow this docker image to be used for
+hidden services.
