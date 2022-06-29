@@ -38,8 +38,12 @@ if [ -z "$RELAY_EXPERT" ] ; then
 	if [ -z "$RELAY_BANDWIDTH" ] ; then
 		echo "Relay bandwidth not set!"
 	else
-		echo "BandwidthRate $RELAY_BANDWIDTH" >> $RELAY_CONFIG
 		echo "BandwidthBurst $RELAY_BANDWIDTH" >> $RELAY_CONFIG
+	fi
+	if [ -z "$RELAY_TRANSFER" ] ; then
+		echo "Relay transfer not set!"
+	else
+		echo "BandwidthRate $RELAY_TRANSFER" >> $RELAY_CONFIG
 	fi
 
 	if [ -n "$RELAY_MAXMEM" ] ; then

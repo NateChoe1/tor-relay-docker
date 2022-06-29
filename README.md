@@ -28,6 +28,10 @@ services:
       - RELAY_EXIT=0
       - RELAY_LOGS=syslog
       - RELAY_BANDWIDTH=25MBytes
+          # I can only ever use a maximum of 25MBytes in 1 second
+      - RELAY_TRANSFER=10MBytes 
+          # Over a long stretch of time, my ISP will only allow 10MBytes of
+	  # transfer on average.
       - RELAY_IPV4_ONLY=1
       - RELAY_MAXMEM=1536MBytes
       - RELAY_FAMILY=[some family value]
