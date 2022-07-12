@@ -19,9 +19,13 @@ if [ -z "$RELAY_EXPERT" ] ; then
 	fi
 
 	if [ -z "$RELAY_PORT" ] ; then
-		echo -n "ORPort 443" >> $RELAY_CONFIG
-	else
+		export RELAY_PORT=443
+	fi
+	if [ -z "$RELAY_ADDRESS" ] ; then
 		echo -n "ORPort $RELAY_PORT" >> $RELAY_CONFIG
+	else
+		echo "OutboundBindAddress $RELAY_ADDRESS" >> $RELAY_CONFIG
+		echo -n "ORPort $RELAY_ADDRESS:$RELAY_PORT" >> $RELAY_CONFIG
 	fi
 	if [ "$RELAY_IPV4_ONLY" -eq 1 ] ; then
 		echo " IPv4Only" >> $RELAY_CONFIG

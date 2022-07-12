@@ -35,6 +35,7 @@ services:
       - RELAY_IPV4_ONLY=1
       - RELAY_MAXMEM=1536MBytes
       - RELAY_FAMILY=[some family value]
+      - RELAY_ADDRESS=1.1.1.1
     restart:
       always
 ```
