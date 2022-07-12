@@ -18,19 +18,17 @@ if [ -z "$RELAY_EXPERT" ] ; then
 		echo "ContactInfo $RELAY_CONTACT" >> $RELAY_CONFIG
 	fi
 
+	if [ -n "$RELAY_ADDRESS" ] ; then
+		echo "Address $RELAY_ADDRESS" >> $RELAY_CONFIG
+	fi
+
 	if [ -z "$RELAY_PORT" ] ; then
 		export RELAY_PORT=443
 	fi
-	if [ -z "$RELAY_ADDRESS" ] ; then
-		echo -n "ORPort $RELAY_PORT" >> $RELAY_CONFIG
-	else
-		echo "OutboundBindAddress $RELAY_ADDRESS" >> $RELAY_CONFIG
-		echo -n "ORPort $RELAY_ADDRESS:$RELAY_PORT" >> $RELAY_CONFIG
-	fi
 	if [ "$RELAY_IPV4_ONLY" -eq 1 ] ; then
-		echo " IPv4Only" >> $RELAY_CONFIG
+		echo "ORPort $RELAY_PORT IPv4Only" >> $RELAY_CONFIG
 	else
-		echo "" >> $RELAY_CONFIG
+		echo "ORPort $RELAY_PORT" >> $RELAY_CONFIG
 	fi
 
 	if [ -z "$RELAY_EXIT" ] || [ "$RELAY_EXIT" -eq 0 ] ; then
